@@ -10,7 +10,9 @@ function saveMovie () {
      method: 'POST',
      body: form_data,
     headers: {
-    'Accept': 'application/json'
+    'Accept': 'application/json',
+    'Authorization': 'Bearer'+ localStorage.getItem ('token')
+
     }
 })
     .then(function (response) {

@@ -8,7 +8,9 @@ function fetchMovies() {
     fetch("/api/v1/movies", {
      method: 'GET',
     headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer'+ localStorage.getItem ('token')
+
     }
     })
     .then(function (response) {
