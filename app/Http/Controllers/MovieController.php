@@ -12,7 +12,7 @@ class MovieController extends Controller
         // Retrieve all movies from the database
         $movies = Movie::all();
 
-        return response()->json($movies);
+        return response()->json(['movies' => $movies]);
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class MovieController extends Controller
             $movie = new Movie();
             $movie->title = $request->input('title');
             $movie->description = $request->input('description');
-            $movie->poster = asset('storage/'.$path);
+            $movie->poster = asset('storage/'. $path);
             $movie->save();
      
             return response()->json([
