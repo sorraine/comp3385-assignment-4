@@ -4,6 +4,7 @@ import HomeView from "../Pages/HomeView.vue";
 import AddMovieView from "../Pages/AddMovieView.vue";
 import MoviesView from "../Pages/MoviesView.vue";
 import LoginView from "../Pages/LoginView.vue";
+import Logout from "../Pages/Logout.vue";
  
 
 const router = createRouter({
@@ -29,7 +30,12 @@ const router = createRouter({
         {
             path: '/login',
             component: LoginView
-        }    
+        },    
+
+        {
+            path: '/logout',
+            component: Logout
+        }
     ]
 })
 

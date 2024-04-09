@@ -1,4 +1,9 @@
 <script setup>
+import { useRouter } from "vue-router";
+import { ref } from "vue";
+
+const router = useRouter();
+let message = ref('');
 
 //Credits to Fabian Bertrand 
 
@@ -12,12 +17,19 @@ function Login() {
         headers: {
             'Accept': 'application/json'
         }
+       
         
     }).then(response => {
+        if (!response.ok) {
+            throw new Error('Incorrect credentials. Check email/password')
+        }
+        
         return response.json();
     }).then(data => {      
         localStorage.setItem('token', data.access_token);
+        router.push({path: '/movies'});
     }).catch(error => {
+        message.value = error.message;
         console.log(error);
     });
 
@@ -26,6 +38,9 @@ function Login() {
 </script>
 
 <template>
+    <div v-if="message">
+<p class="alert alert-danger">{{ message }}</p>
+</div>
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-6">
